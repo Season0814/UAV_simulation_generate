@@ -1,0 +1,15 @@
+<!--
+Defaults:
+${pose}: 0 0 0 0 0 0
+${scale}: 1 1 1
+${uri}: model://x500_base/meshes/default.dae
+-->
+<visual name="${visualName}">
+  <pose>${pose}</pose>
+  <geometry>
+    <mesh>
+      <scale>${scale}</scale>
+      <uri>${uri}</uri>
+    </mesh>
+  </geometry>
+</visual>

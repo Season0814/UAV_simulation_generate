@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  test_model_base Modular SDF Template
+  
+  Description:
+  This is the top-level framework template for generating the test_model_base quadcopter simulation model.
+  It acts as a skeleton. All major physical and visual components (Inertial, Visual, Collision, Joint) 
+  have been abstracted into placeholders (e.g., `${baseLinkInertial}`).
+  
+  LLM Instructions:
+  1. Do NOT generate raw XML for the placeholders in this file directly.
+  2. Instead, read the detailed comments above each placeholder to get the default parameters.
+  3. Call the corresponding specialized component templates (like 'inertial.sdf.template', 'visual.sdf.template') 
+     to generate the XML snippets.
+  4. Fill those generated snippets back into the placeholders in this framework to assemble the final SDF.
+-->
+<sdf version='1.9'>
+  <model name='${modelName}'>
+    <pose>0 0 .24 0 0 0</pose>
+    <self_collide>false</self_collide>
+    <static>false</static>
+    
+    <!-- Base Link -->
+    <link name="base_link">
+      <!-- 
+        Inertial: Base Link
+        Default mass: 2.0
+        Default ixx: 0.02166666666666667
+        Default iyy: 0.02166666666666667
+        Default izz: 0.04000000000000001
+      -->
+      ${baseLinkInertial}
+      <gravity>true</gravity>
+      <velocity_decay />
+      
+      <!-- 
+        Visual: Body
+        Default pose: 0 0 .025 0 0 3.141592654
+        Default uri: model://test_model_base/meshes/NXP-HGD-CF.dae
+      -->
+      ${baseLinkVisual}
+      
+      <!-- Motor Base Visuals -->
+      <!-- 
+        Visual: Motor Base 0
+        Default pose: 0.174 0.174 .032 0 0 -.45
+        Default uri: model://test_model_base/meshes/5010Base.dae
+      -->
+      ${motorBaseVisual0}
+      <!-- 
+        Visual: Motor Base 1
+        Default pose: -0.174 0.174 .032 0 0 -.45
+        Default uri: model://test_model_base/meshes/5010Base.dae
+      -->
+      ${motorBaseVisual1}
+      <!-- 
+        Visual: Motor Base 2
+        Default pose: 0.174 -0.174 .032 0 0 -.45
+        Default uri: model://test_model_base/meshes/5010Base.dae
+      -->
+      ${motorBaseVisual2}
+      <!-- 
+        Visual: Motor Base 3
+        Default pose: -0.174 -0.174 .032 0 0 -.45
+        Default uri: model://test_model_base/meshes/5010Base.dae
+      -->
+      ${motorBaseVisual3}
+
+      <!-- 
+        Collision: Base Link Body
+        Default pose: 0 0 .007 0 0 0
+        Default size: 0.35355339059327373 0.35355339059327373 0.05
+      -->
+      ${baseLinkCollision0}
+      <!-- 
+        Collision: Left Landing Gear Leg
+        Default pose: 0 -0.098 -.123 -0.35 0 0
+        Default size: 0.015 0.015 0.21
+      -->
+      ${baseLinkCollision1}
+      <!-- 
+        Collision: Right Landing Gear Leg
+        Default pose: 0 0.098 -.123 0.35 0 0
+        Default size: 0.015 0.015 0.21
+      -->
+      ${baseLinkCollision2}
+      <!-- 
+        Collision: Left Landing Gear Skid
+        Default pose: 0 -0.132 -.2195 0 0 0
+        Default size: 0.25 0.015 0.015
+      -->
+      ${baseLinkCollision3}
+      <!-- 
+        Collision: Right Landing Gear Skid
+        Default pose: 0 0.132 -.2195 0 0 0
+        Default size: 0.25 0.015 0.015
+      -->
+      ${baseLinkCollision4}
+
+      <!-- 
+        [Optional] Standard Sensors 
+        This section is a placeholder. The agent should generate the standard sensors block 
+        using 'standard_sensors.sdf.template' and insert it here.
+      -->
+      ${standardSensors}
+
+    </link>
+
+    <!-- 
+      [Required] Rotors and Joints
+      The agent should generate rotor links and joints. 
+      For a fully procedural approach, these could be generated via loops in Python, 
+      but here we provide the structure for a standard quadcopter test_model base.
+    -->
+    
+    <!-- Rotor 0 -->
+    <link name="rotor_0">
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay />
+      <pose>0.174 -0.174 0.06 0 0 0</pose>
+      <!-- 
+        Inertial: Rotor 0
+        Default mass: 0.016076923076923075
+        Default ixx: 3.8464910483993325e-07
+        Default iyy: 2.6115851691700804e-05
+        Default izz: 2.649858234714004e-05
+      -->
+      ${rotor0Inertial}
+      <!-- 
+        Visual: Rotor 0 Propeller (CCW)
+        Default pose: -0.022 -0.14638461538461536 -0.016 0 0 0
+        Default scale: 0.8461538461538461 0.8461538461538461 0.8461538461538461
+        Default uri: model://test_model_base/meshes/1345_prop_ccw.stl
+      -->
+      ${rotor0Visual}
+      <!-- 
+        Visual: Rotor 0 Motor Bell
+        Default pose: 0 0 -.032 0 0 0
+        Default uri: model://test_model_base/meshes/5010Bell.dae
+      -->
+      ${rotor0MotorBellVisual}
+      <!-- 
+        Collision: Rotor 0
+        Default size: 0.2792307692307692 0.016923076923076923 0.0008461538461538462
+      -->
+      ${rotor0Collision}
+    </link>
+    <!-- 
+      Joint: Rotor 0 Joint
+      Default parent: base_link
+      Default child: rotor_0
+      Default axis_xyz: 0 0 1
+    -->
+    ${rotor0Joint}
+
+    <!-- Rotor 1 -->
+    <link name="rotor_1">
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay />
+      <pose>-0.174 0.174 0.06 0 0 0</pose>
+      <!-- 
+        Inertial: Rotor 1
+        Default mass: 0.016076923076923075
+        Default ixx: 3.8464910483993325e-07
+        Default iyy: 2.6115851691700804e-05
+        Default izz: 2.649858234714004e-05
+      -->
+      ${rotor1Inertial}
+      <!-- 
+        Visual: Rotor 1 Propeller (CCW)
+        Default pose: -0.022 -0.14638461538461536 -0.016 0 0 0
+        Default scale: 0.8461538461538461 0.8461538461538461 0.8461538461538461
+        Default uri: model://test_model_base/meshes/1345_prop_ccw.stl
+      -->
+      ${rotor1Visual}
+      <!-- 
+        Visual: Rotor 1 Motor Bell
+        Default pose: 0 0 -.032 0 0 0
+        Default uri: model://test_model_base/meshes/5010Bell.dae
+      -->
+      ${rotor1MotorBellVisual}
+      <!-- 
+        Collision: Rotor 1
+        Default size: 0.2792307692307692 0.016923076923076923 0.0008461538461538462
+      -->
+      ${rotor1Collision}
+    </link>
+    <!-- 
+      Joint: Rotor 1 Joint
+      Default parent: base_link
+      Default child: rotor_1
+      Default axis_xyz: 0 0 1
+    -->
+    ${rotor1Joint}
+
+    <!-- Rotor 2 -->
+    <link name="rotor_2">
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay />
+      <pose>0.174 0.174 0.06 0 0 0</pose>
+      <!-- 
+        Inertial: Rotor 2
+        Default mass: 0.016076923076923075
+        Default ixx: 3.8464910483993325e-07
+        Default iyy: 2.6115851691700804e-05
+        Default izz: 2.649858234714004e-05
+      -->
+      ${rotor2Inertial}
+      <!-- 
+        Visual: Rotor 2 Propeller (CW)
+        Default pose: -0.022 -0.14638461538461536 -0.016 0 0 0
+        Default scale: 0.8461538461538461 0.8461538461538461 0.8461538461538461
+        Default uri: model://test_model_base/meshes/1345_prop_cw.stl
+      -->
+      ${rotor2Visual}
+      <!-- 
+        Visual: Rotor 2 Motor Bell
+        Default pose: 0 0 -.032 0 0 0
+        Default uri: model://test_model_base/meshes/5010Bell.dae
+      -->
+      ${rotor2MotorBellVisual}
+      <!-- 
+        Collision: Rotor 2
+        Default size: 0.2792307692307692 0.016923076923076923 0.0008461538461538462
+      -->
+      ${rotor2Collision}
+    </link>
+    <!-- 
+      Joint: Rotor 2 Joint
+      Default parent: base_link
+      Default child: rotor_2
+      Default axis_xyz: 0 0 1
+    -->
+    ${rotor2Joint}
+
+    <!-- Rotor 3 -->
+    <link name="rotor_3">
+      <gravity>true</gravity>
+      <self_collide>false</self_collide>
+      <velocity_decay />
+      <pose>-0.174 -0.174 0.06 0 0 0</pose>
+      <!-- 
+        Inertial: Rotor 3
+        Default mass: 0.016076923076923075
+        Default ixx: 3.8464910483993325e-07
+        Default iyy: 2.6115851691700804e-05
+        Default izz: 2.649858234714004e-05
+      -->
+      ${rotor3Inertial}
+      <!-- 
+        Visual: Rotor 3 Propeller (CW)
+        Default pose: -0.022 -0.14638461538461536 -0.016 0 0 0
+        Default scale: 0.8461538461538461 0.8461538461538461 0.8461538461538461
+        Default uri: model://test_model_base/meshes/1345_prop_cw.stl
+      -->
+      ${rotor3Visual}
+      <!-- 
+        Visual: Rotor 3 Motor Bell
+        Default pose: 0 0 -.032 0 0 0
+        Default uri: model://test_model_base/meshes/5010Bell.dae
+      -->
+      ${rotor3MotorBellVisual}
+      <!-- 
+        Collision: Rotor 3
+        Default size: 0.2792307692307692 0.016923076923076923 0.0008461538461538462
+      -->
+      ${rotor3Collision}
+    </link>
+    <!-- 
+      Joint: Rotor 3 Joint
+      Default parent: base_link
+      Default child: rotor_3
+      Default axis_xyz: 0 0 1
+    -->
+    ${rotor3Joint}
+
+  </model>
+</sdf>

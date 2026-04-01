@@ -1,0 +1,32 @@
+__pycache__/
+*.py[cod]
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+
+.venv/
+venv/
+env/
+
+*.log
+
+# Generated outputs
+/instance/
+/generator/instance/
+*.sdf
+
+# Local models / weights (very large)
+/LLM/
+/**/*.safetensors
+/**/*.bin
+/**/*.pt
+/**/*.gguf
+
+# Common local caches
+.cache/
