@@ -9,7 +9,7 @@ from langchain.prompts import PromptTemplate
 
 # 1. Configuration
 MODEL_PATH = "/home/zhike/Season/AI4Sim/LLM/Qwen3-14B"
-TEMPLATE_DIR = "/home/zhike/Season/AI4Sim/generator/templates"
+TEMPLATE_DIR = "/home/zhike/Season/AI4Sim/generator/ontology"
 INSTANCE_DIR = "/home/zhike/Season/AI4Sim/generator/instance"
 
 class SDFGenerator:
