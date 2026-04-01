@@ -8,7 +8,7 @@ Template-driven SDF generator for UAV simulation models. The project follows a �
   - `templates/`: framework template(s) and component templates (inertial/visual/collision/joint/sensors/motors, etc.)
   - `sdf_generator.py`: baseline generator (quick assembly for “framework + motor plugins”)
   - `universal_sdf_generator.py`: universal generator (parses placeholders and assembles a full model component-by-component)
-- `ontology/`: structured UAV knowledge notes (used for implementation and paper writing)
+- `ontology/`: structured UAV knowledge notes
 - `workspace/`: helper scripts (e.g., model download/verification)
 - `instance/`, `generator/instance/`: generated outputs (ignored by default via `.gitignore`)
 - `LLM/`: local model weights (very large, ignored by default via `.gitignore`)
