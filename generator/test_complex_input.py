@@ -19,7 +19,7 @@ def test_complex_user_input():
     print("==================================================")
     # 将用户的复杂输入作为 description 传给 LLM，让它去匹配 inertial.sdf.template
     inertial_description = f"User Request: {complex_user_prompt}\nExtract the relevant mass and inertia parameters to generate the inertial component. If not mentioned, use sensible defaults."
-    inertial_xml = generator.generate_component(inertial_description, "inertial.sdf.template")
+    inertial_xml = generator.generate_component(inertial_description, "inertial.sdf")
     print("\n[Result - Inertial XML]")
     print(generator.prettify_xml(inertial_xml))
     
@@ -27,7 +27,7 @@ def test_complex_user_input():
     print("Testing 2: Complex Visual Generation")
     print("==================================================")
     visual_description = f"User Request: {complex_user_prompt}\nExtract the relevant visual mesh URI and visual properties to generate the visual component. The visual name should be 'base_link_custom_visual'."
-    visual_xml = generator.generate_component(visual_description, "visual.sdf.template")
+    visual_xml = generator.generate_component(visual_description, "visual.sdf")
     print("\n[Result - Visual XML]")
     print(generator.prettify_xml(visual_xml))
 

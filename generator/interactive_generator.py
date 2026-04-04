@@ -62,8 +62,8 @@ def main():
     print_info("Analyzing available templates for customizable parameters...")
     
     try:
-        framework_content = generator.load_template_content("model_framework.sdf.template")
-        motor_content = generator.load_template_content("motor_model.sdf.template")
+        framework_content = generator.load_template_content("model_framework.sdf")
+        motor_content = generator.load_template_content("motor_model.sdf")
         
         framework_vars = extract_template_variables(framework_content)
         motor_vars = extract_template_variables(motor_content)

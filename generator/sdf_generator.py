@@ -42,6 +42,11 @@ class SDFGenerator:
 
     def load_template_content(self, filename):
         path = os.path.join(TEMPLATE_DIR, filename)
+        if not os.path.exists(path):
+            if not filename.endswith(".template"):
+                alt_path = path + ".template"
+                if os.path.exists(alt_path):
+                    path = alt_path
         with open(path, 'r') as f:
             return f.read()
 
@@ -119,8 +124,8 @@ class SDFGenerator:
         print(f"Generating model for: {description}")
         
         # 1. Load Templates
-        framework_template = self.load_template_content("model_framework.sdf.template")
-        motor_template = self.load_template_content("motor_model.sdf.template")
+        framework_template = self.load_template_content("model_framework.sdf")
+        motor_template = self.load_template_content("motor_model.sdf")
         
         # 2. Get Model Info
         model_info = self.generate_model_info(description)
@@ -150,6 +155,9 @@ class SDFGenerator:
         except Exception as e:
             print(f"Warning: XML Prettify failed: {e}")
             # Fallback to original if parsing fails
+
+        final_sdf = re.sub(r"<!--[\s\S]*?-->", "", final_sdf)
+        final_sdf = "\n".join([line for line in final_sdf.split("\n") if line.strip()])
         
         # 6. Save to File
         output_filename = f"{model_name}.sdf"
