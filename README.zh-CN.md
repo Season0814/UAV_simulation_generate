@@ -53,13 +53,9 @@ PY
 
 输出位置：
 
-- `generator/instance/test3/model.sdf`：顶层模型（包含 `<include merge="true">model://test3_base</include>` + 电机插件）
-- `generator/instance/test3_base/model.sdf`：base 物理模型（links / joints / collisions / sensors / meshes）
+- `generator/instance/test3/test3/model.sdf`：顶层模型（包含 `<include merge="true">model://test3_base</include>` + 电机插件）
+- `generator/instance/test3/test3_base/model.sdf`：base 物理模型（links / joints / collisions / sensors / meshes）
 
-如果你希望目录结构像 `test1/test2/test3` 那样分别存 `motor.sdf` 和 `physical.sdf`，可以直接重命名：
-
-- `generator/instance/test3/model.sdf` → `generator/instance/test3/motor.sdf`
-- `generator/instance/test3_base/model.sdf` → `generator/instance/test3/physical.sdf`
 
 ### 电机提示词怎么写
 
@@ -99,8 +95,75 @@ python /home/zhike/Season/AI4Sim/generator/universal_sdf_generator.py
 
 输出写入 `generator/instance/<model_name>/model.sdf`。
 
+如果你调用的是 `generate_model_pair(model_name=..., ...)`，输出结构为：
+
+- `generator/instance/<model_name>/<model_name>/model.sdf`
+- `generator/instance/<model_name>/<model_name>_base/model.sdf`（或你传入的 `base_model_name`）
+
+## 在 Gazebo Sim 8 中运行
+
+环境准备：
+
+- 安装 Gazebo Sim 8（gz-sim8）及其依赖。
+- 确认已安装/可找到多旋翼电机系统插件（模型使用 `gz-sim-multicopter-motor-model-system`）。
+- 确保 `gz` / `gz sim` / `gz topic` / `gz service` 在 `PATH` 中可用。
+
+前置条件（以 `test1` 为例）：
+
+- 顶层模型：`generator/instance/test1/test1/model.sdf` 和 `model.config`（URI：`model://test1`）
+- Base 模型：`generator/instance/test1/test1_base/model.sdf` 和 `model.config`（URI：`model://test1_base`）
+- 网格资源包：`generator/instance/test_model_base/meshes/*`（SDF 中使用：`model://test_model_base/meshes/...`）
+
+### 1) 配置资源路径（必须在启动 `gz sim` 之前设置）
+
+```bash
+export GZ_SIM_RESOURCE_PATH=/home/zhike/Season/AI4Sim/generator/instance/test1:/home/zhike/Season/AI4Sim/generator/instance
+export IGN_GAZEBO_RESOURCE_PATH=$GZ_SIM_RESOURCE_PATH
+```
+
+### 2) 启动 Gazebo
+
+```bash
+gz sim -r -v 4 empty.sdf
+```
+
+### 3) 把模型 spawn 到正在运行的 world 里
+
+新开一个终端执行：
+
+```bash
+gz service -s /world/empty/create \
+  --reqtype gz.msgs.EntityFactory --reptype gz.msgs.Boolean --timeout 5000 \
+  --req 'sdf_filename: "model://test1", name: "test1", pose: { position: { x: 0, y: 0, z: 0.3 } }'
+```
+
+### 4) 起飞（手动发送电机转速）
+
+先确认电机指令 topic：
+
+```bash
+gz topic -l | grep motor_speed
+gz topic -i -t /test1/command/motor_speed
+```
+
+持续发送固定转速（建议循环发送，按 Ctrl+C 停止循环）：
+
+```bash
+while true; do
+  gz topic -t /test1/command/motor_speed -m gz.msgs.Actuators -p 'velocity: 600 velocity: 600 velocity: 600 velocity: 600'
+  sleep 0.1
+done
+```
+
+停桨：
+
+```bash
+gz topic -t /test1/command/motor_speed -m gz.msgs.Actuators -p 'velocity: 0 velocity: 0 velocity: 0 velocity: 0'
+```
+
+注意：这里是开环控制（没有姿态控制器），可能会漂移甚至翻滚。想稳定悬停需要接控制器（例如 PX4 SITL）或增加控制系统插件。
+
 ## 备注
 
 - 本仓库默认不包含大模型权重与生成产物。请在本地下载模型并设置 `AI4SIM_MAIN_PATH` / `AI4SIM_7B_PATH`。
 - 生成流程受模板约束，产出的 XML 片段会在最终组装阶段做基础校验与格式化。
-

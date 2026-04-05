@@ -53,13 +53,9 @@ PY
 
 Output locations:
 
-- `generator/instance/test3/model.sdf`: top-level model (includes `<include merge="true">model://test3_base</include>` + motor plugins)
-- `generator/instance/test3_base/model.sdf`: base physical model (links / joints / collisions / sensors / meshes)
+- `generator/instance/test3/test3/model.sdf`: top-level model (includes `<include merge="true">model://test3_base</include>` + motor plugins)
+- `generator/instance/test3/test3_base/model.sdf`: base physical model (links / joints / collisions / sensors / meshes)
 
-If you prefer the `test1/test2/test3` layout with separate `motor.sdf` and `physical.sdf`, rename:
-
-- `generator/instance/test3/model.sdf` → `generator/instance/test3/motor.sdf`
-- `generator/instance/test3_base/model.sdf` → `generator/instance/test3/physical.sdf`
 
 ### Motor prompt patterns
 
@@ -98,6 +94,74 @@ python /home/zhike/Season/AI4Sim/generator/universal_sdf_generator.py
 ```
 
 Outputs are written to `generator/instance/<model_name>/model.sdf`.
+
+If you call `generate_model_pair(model_name=..., ...)`, outputs are written to:
+
+- `generator/instance/<model_name>/<model_name>/model.sdf`
+- `generator/instance/<model_name>/<model_name>_base/model.sdf` (or your custom `base_model_name`)
+
+## Run in Gazebo Sim 8
+
+Environment setup:
+
+- Install Gazebo Sim 8 (gz-sim8) and its dependencies.
+- Make sure the multicopter motor system plugin is available (the model uses `gz-sim-multicopter-motor-model-system`).
+- Ensure `gz`, `gz sim`, `gz topic`, and `gz service` are on your `PATH`.
+
+Prerequisites (example: `test1`):
+
+- Top model: `generator/instance/test1/test1/model.sdf` and `model.config` (URI: `model://test1`)
+- Base model: `generator/instance/test1/test1_base/model.sdf` and `model.config` (URI: `model://test1_base`)
+- Mesh package: `generator/instance/test_model_base/meshes/*` (URI used in SDF: `model://test_model_base/meshes/...`)
+
+### 1) Set resource paths (must be set before starting `gz sim`)
+
+```bash
+export GZ_SIM_RESOURCE_PATH=/home/zhike/Season/AI4Sim/generator/instance/test1:/home/zhike/Season/AI4Sim/generator/instance
+export IGN_GAZEBO_RESOURCE_PATH=$GZ_SIM_RESOURCE_PATH
+```
+
+### 2) Start Gazebo
+
+```bash
+gz sim -r -v 4 empty.sdf
+```
+
+### 3) Spawn the model into the running world
+
+In another terminal:
+
+```bash
+gz service -s /world/empty/create \
+  --reqtype gz.msgs.EntityFactory --reptype gz.msgs.Boolean --timeout 5000 \
+  --req 'sdf_filename: "model://test1", name: "test1", pose: { position: { x: 0, y: 0, z: 0.3 } }'
+```
+
+### 4) Takeoff (manual motor speed command)
+
+Find the motor command topic:
+
+```bash
+gz topic -l | grep motor_speed
+gz topic -i -t /test1/command/motor_speed
+```
+
+Send a constant motor speed (repeat in a loop for a stable input stream; stop with Ctrl+C):
+
+```bash
+while true; do
+  gz topic -t /test1/command/motor_speed -m gz.msgs.Actuators -p 'velocity: 600 velocity: 600 velocity: 600 velocity: 600'
+  sleep 0.1
+done
+```
+
+Stop motors:
+
+```bash
+gz topic -t /test1/command/motor_speed -m gz.msgs.Actuators -p 'velocity: 0 velocity: 0 velocity: 0 velocity: 0'
+```
+
+Note: this is open-loop control (no attitude controller), so the vehicle may drift or flip. For stable hover, connect a controller (e.g., PX4 SITL) or add a control system plugin.
 
 ## Notes
 

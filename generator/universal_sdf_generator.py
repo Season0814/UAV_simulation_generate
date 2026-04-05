@@ -534,7 +534,7 @@ class UniversalSDFGenerator:
             return self.domain_llms[domain_key]
         return self.llm
 
-    def generate_full_model(self, model_name, framework_template="model_base.sdf", user_requirements_text=None, user_requirements=None):
+    def generate_full_model(self, model_name, framework_template="model_base.sdf", user_requirements_text=None, user_requirements=None, output_dir=None):
         """
         Generates a complete SDF model by parsing a framework template, extracting 
         placeholder comments, and generating each component via LLM.
@@ -652,7 +652,8 @@ class UniversalSDFGenerator:
         # Clean up and save the result
         framework_content = re.sub(r"<!--[\s\S]*?-->", "", framework_content)
         
-        output_dir = os.path.join(INSTANCE_DIR, model_name)
+        if output_dir is None:
+            output_dir = os.path.join(INSTANCE_DIR, model_name)
         os.makedirs(output_dir, exist_ok=True)
         output_path = os.path.join(output_dir, "model.sdf")
         
@@ -677,10 +678,15 @@ class UniversalSDFGenerator:
         if base_model_name is None:
             base_model_name = f"{model_name}_base"
 
+        pair_root_dir = os.path.join(INSTANCE_DIR, model_name)
+        base_output_dir = os.path.join(pair_root_dir, base_model_name)
+        motor_output_dir = os.path.join(pair_root_dir, model_name)
+
         base_path = self.generate_full_model(
             model_name=base_model_name,
             framework_template="model_base.sdf",
             user_requirements_text=user_description,
+            output_dir=base_output_dir,
         )
 
         link_map = {}
@@ -719,9 +725,8 @@ class UniversalSDFGenerator:
         final_sdf = final_sdf.replace("${motorPlugins}", motor_plugins_text)
         final_sdf = re.sub(r"<!--[\s\S]*?-->", "", final_sdf)
 
-        output_dir = os.path.join(INSTANCE_DIR, model_name)
-        os.makedirs(output_dir, exist_ok=True)
-        output_path = os.path.join(output_dir, "model.sdf")
+        os.makedirs(motor_output_dir, exist_ok=True)
+        output_path = os.path.join(motor_output_dir, "model.sdf")
 
         final_xml = self.prettify_xml(final_sdf)
         with open(output_path, "w", encoding="utf-8") as f:
