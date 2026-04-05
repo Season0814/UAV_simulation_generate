@@ -18,8 +18,11 @@ env/
 
 # Generated outputs
 /instance/
-/generator/instance/
 *.sdf
+
+!/generator/instance/**/*.sdf
+!/generator/instance/**/*.config
+!/generator/instance/**/meshes/**
 
 # Local models / weights (very large)
 /LLM/
