@@ -203,6 +203,12 @@ class OpenAIChatCompletionsLLM:
         self.temperature = temperature
         self.top_p = top_p
         self.max_tokens = max_tokens
+        self.last_usage = {}
+        self.usage_totals = {"prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0}
+
+    def reset_usage(self):
+        self.last_usage = {}
+        self.usage_totals = {"prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0}
 
     def invoke(self, prompt):
         if not self.api_key:
@@ -236,6 +242,14 @@ class OpenAIChatCompletionsLLM:
             raise RuntimeError(f"OpenAI API URLError: {e.reason}") from e
 
         data = json.loads(raw) if raw else {}
+        usage = data.get("usage") if isinstance(data, dict) else None
+        if isinstance(usage, dict):
+            self.last_usage = dict(usage)
+            for k in ("prompt_tokens", "completion_tokens", "total_tokens"):
+                try:
+                    self.usage_totals[k] = int(self.usage_totals.get(k, 0)) + int(usage.get(k, 0) or 0)
+                except Exception:
+                    pass
         try:
             return data["choices"][0]["message"]["content"]
         except Exception:
@@ -301,11 +315,12 @@ class UniversalSDFGenerator:
         domain_device = int(os.getenv("AI4SIM_DOMAIN_DEVICE", str(DOMAIN_DEVICE_DEFAULT)))
 
         if domain_model_paths is None:
+            domain_default_path = os.getenv("AI4SIM_DOMAIN_PATH", DOMAIN_MODEL_DEFAULT)
             domain_model_paths = {
-                "visual": DOMAIN_MODEL_DEFAULT,
-                "collision": DOMAIN_MODEL_DEFAULT,
-                "inertial": DOMAIN_MODEL_DEFAULT,
-                "joints": DOMAIN_MODEL_DEFAULT,
+                "visual": domain_default_path,
+                "collision": domain_default_path,
+                "inertial": domain_default_path,
+                "joints": domain_default_path,
             }
 
         self.domain_llms = {}
@@ -340,36 +355,43 @@ class UniversalSDFGenerator:
 
         if isinstance(domain_model_paths, dict):
             _cache_by_path = {}
+            _failed_paths = set()
             for k, path in domain_model_paths.items():
+                if path in _failed_paths:
+                    print(f"Warning: failed to load domain LLM for '{k}', will use main LLM")
+                    continue
                 try:
                     if path in _cache_by_path:
                         self.domain_llms[k] = _cache_by_path[path]
                     else:
-                        if torch.cuda.is_available():
-                            torch.cuda.set_device(domain_device)
                         tok = AutoTokenizer.from_pretrained(path)
+                        use_cuda = torch.cuda.is_available()
+                        dtype = torch.float16 if use_cuda else torch.float32
+                        device_map = "auto" if use_cuda else None
                         mdl = AutoModelForCausalLM.from_pretrained(
                             path,
-                            torch_dtype=torch.float16,
-                            device_map={"": domain_device},
+                            torch_dtype=dtype,
+                            device_map=device_map,
                             low_cpu_mem_usage=True
                         )
-                        pp = pipeline(
-                            "text-generation",
-                            model=mdl,
-                            tokenizer=tok,
-                            device=domain_device,
-                            max_new_tokens=2048,
-                            temperature=0.1,
-                            top_p=0.95,
-                            repetition_penalty=1.15,
-                            return_full_text=False
-                        )
+                        pipe_kwargs = {
+                            "model": mdl,
+                            "tokenizer": tok,
+                            "max_new_tokens": 2048,
+                            "temperature": 0.1,
+                            "top_p": 0.95,
+                            "repetition_penalty": 1.15,
+                            "return_full_text": False,
+                        }
+                        if use_cuda and device_map is None:
+                            pipe_kwargs["device"] = domain_device
+                        pp = pipeline("text-generation", **pipe_kwargs)
                         _cache_by_path[path] = HuggingFacePipeline(pipeline=pp)
                         self.domain_llms[k] = _cache_by_path[path]
                     print(f"Loaded domain LLM for '{k}' from {path}")
                 except Exception as _:
                     print(f"Warning: failed to load domain LLM for '{k}', will use main LLM")
+                    _failed_paths.add(path)
 
     def load_template_content(self, filename):
         path = os.path.join(TEMPLATE_DIR, filename)
@@ -432,6 +454,19 @@ class UniversalSDFGenerator:
         # Remove </think> tag and everything before it if present (handling Qwen thinking process)
         if "</think>" in response:
             response = response.split("</think>")[-1].strip()
+
+        m = re.search(r"<([A-Za-z_][\w:.-]*)(\s[^>]*)?>[\s\S]*?</\1>", response)
+        if m:
+            response = m.group(0).strip()
+        else:
+            m = re.search(r"<([A-Za-z_][\\w:.-]*)(\\s[^>]*)?/>", response)
+            if m:
+                response = m.group(0).strip()
+            else:
+                start = response.find("<")
+                end = response.rfind(">")
+                if start != -1 and end != -1 and end > start:
+                    response = response[start:end + 1].strip()
             
         return response
 
@@ -664,7 +699,7 @@ class UniversalSDFGenerator:
         print(f"\nSuccessfully generated full model at: {output_path}")
         return output_path
 
-    def generate_model_pair(self, model_name, user_description, base_model_name=None):
+    def generate_model_pair(self, model_name, user_description, base_model_name=None, pair_root_dir=None):
         motor_specs = _extract_motor_specs(user_description)
         if not motor_specs:
             motor_specs = _build_default_motor_specs()
@@ -678,7 +713,8 @@ class UniversalSDFGenerator:
         if base_model_name is None:
             base_model_name = f"{model_name}_base"
 
-        pair_root_dir = os.path.join(INSTANCE_DIR, model_name)
+        if pair_root_dir is None:
+            pair_root_dir = os.path.join(INSTANCE_DIR, model_name)
         base_output_dir = os.path.join(pair_root_dir, base_model_name)
         motor_output_dir = os.path.join(pair_root_dir, model_name)
 

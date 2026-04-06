@@ -1,0 +1,163 @@
+{
+  "case": "caseA",
+  "prompt": "Please create a quadcopter model called \"test1\". Keep the same default layout and geometry, but make the vehicle heavier: set the base_link mass to 3.5, and set its inertia to ixx=0.035, iyy=0.035, izz=0.065 (keep ixy/ixz/iyz as 0).",
+  "generated_at": "2026-04-05 20:58:12",
+  "runs": [
+    {
+      "variant": "ours",
+      "use_domain_models": true,
+      "output_root": "/home/zhike/Season/AI4Sim/generator/instance/compare_experiment/ours",
+      "paths": {
+        "base_model_path": "/home/zhike/Season/AI4Sim/generator/instance/compare_experiment/ours/test1_base/model.sdf",
+        "model_path": "/home/zhike/Season/AI4Sim/generator/instance/compare_experiment/ours/test1/model.sdf"
+      },
+      "timing_s": {
+        "init": 5.83782491798047,
+        "generate": 610.8662417620071,
+        "total": 616.7040666799876
+      },
+      "openai_usage": {
+        "prompt_tokens": 1449,
+        "completion_tokens": 858,
+        "total_tokens": 2307
+      },
+      "validation": {
+        "base": {
+          "path": "/home/zhike/Season/AI4Sim/generator/instance/compare_experiment/ours/test1_base/model.sdf",
+          "xml_ok": true,
+          "base_link_inertial": {
+            "mass": 3.5,
+            "ixx": 0.035,
+            "iyy": 0.035,
+            "izz": 0.065,
+            "ixy": 0.0,
+            "ixz": 0.0,
+            "iyz": 0.0
+          }
+        },
+        "model": {
+          "path": "/home/zhike/Season/AI4Sim/generator/instance/compare_experiment/ours/test1/model.sdf",
+          "xml_ok": true,
+          "include_uri": "model://test1_base"
+        }
+      }
+    },
+    {
+      "variant": "gpt_only",
+      "use_domain_models": false,
+      "output_root": "/home/zhike/Season/AI4Sim/generator/instance/compare_experiment/gpt_only",
+      "paths": {
+        "base_model_path": "/home/zhike/Season/AI4Sim/generator/instance/compare_experiment/gpt_only/test1_base/model.sdf",
+        "model_path": "/home/zhike/Season/AI4Sim/generator/instance/compare_experiment/gpt_only/test1/model.sdf"
+      },
+      "timing_s": {
+        "init": 0.00015897396951913834,
+        "generate": 84.98122531897388,
+        "total": 84.9813842929434
+      },
+      "openai_usage": {
+        "prompt_tokens": 10868,
+        "completion_tokens": 3903,
+        "total_tokens": 14771
+      },
+      "validation": {
+        "base": {
+          "path": "/home/zhike/Season/AI4Sim/generator/instance/compare_experiment/gpt_only/test1_base/model.sdf",
+          "xml_ok": true,
+          "base_link_inertial": {
+            "mass": 3.5,
+            "ixx": 0.035,
+            "iyy": 0.035,
+            "izz": 0.065,
+            "ixy": 0.0,
+            "ixz": 0.0,
+            "iyz": 0.0
+          }
+        },
+        "model": {
+          "path": "/home/zhike/Season/AI4Sim/generator/instance/compare_experiment/gpt_only/test1/model.sdf",
+          "xml_ok": true,
+          "include_uri": "model://test1_base"
+        }
+      }
+    },
+    {
+      "variant": "gpt_only_no_ontology",
+      "use_domain_models": false,
+      "output_root": "/home/zhike/Season/AI4Sim/generator/instance/compare_experiment/gpt_only_no_ontology",
+      "paths": {
+        "base_model_path": "/home/zhike/Season/AI4Sim/generator/instance/compare_experiment/gpt_only_no_ontology/test1_base/model.sdf",
+        "model_path": "/home/zhike/Season/AI4Sim/generator/instance/compare_experiment/gpt_only_no_ontology/test1/model.sdf"
+      },
+      "timing_s": {
+        "init": 3.440072759985924e-07,
+        "generate": 60.83852821600158,
+        "total": 60.838528560008854
+      },
+      "openai_usage": {
+        "prompt_tokens": 5720,
+        "completion_tokens": 5538,
+        "total_tokens": 11258
+      },
+      "validation": {
+        "base": {
+          "path": "/home/zhike/Season/AI4Sim/generator/instance/compare_experiment/gpt_only_no_ontology/test1_base/model.sdf",
+          "xml_ok": true,
+          "base_link_inertial": {
+            "mass": 3.5,
+            "ixx": 0.035,
+            "iyy": 0.035,
+            "izz": 0.065,
+            "ixy": 0.0,
+            "ixz": 0.0,
+            "iyz": 0.0
+          }
+        },
+        "model": {
+          "path": "/home/zhike/Season/AI4Sim/generator/instance/compare_experiment/gpt_only_no_ontology/test1/model.sdf",
+          "xml_ok": true,
+          "include_uri": "model://test1_base"
+        }
+      }
+    },
+    {
+      "variant": "gpt_only_from_scratch",
+      "use_domain_models": false,
+      "output_root": "/home/zhike/Season/AI4Sim/generator/instance/compare_experiment/gpt_only_from_scratch",
+      "paths": {
+        "base_model_path": "/home/zhike/Season/AI4Sim/generator/instance/compare_experiment/gpt_only_from_scratch/test1_base/model.sdf",
+        "model_path": "/home/zhike/Season/AI4Sim/generator/instance/compare_experiment/gpt_only_from_scratch/test1/model.sdf"
+      },
+      "timing_s": {
+        "init": 3.4301774576306343e-07,
+        "generate": 31.683752793993335,
+        "total": 31.68375313701108
+      },
+      "openai_usage": {
+        "prompt_tokens": 421,
+        "completion_tokens": 2729,
+        "total_tokens": 3150
+      },
+      "validation": {
+        "base": {
+          "path": "/home/zhike/Season/AI4Sim/generator/instance/compare_experiment/gpt_only_from_scratch/test1_base/model.sdf",
+          "xml_ok": true,
+          "base_link_inertial": {
+            "mass": 3.5,
+            "ixx": 0.035,
+            "iyy": 0.035,
+            "izz": 0.065,
+            "ixy": 0.0,
+            "ixz": 0.0,
+            "iyz": 0.0
+          }
+        },
+        "model": {
+          "path": "/home/zhike/Season/AI4Sim/generator/instance/compare_experiment/gpt_only_from_scratch/test1/model.sdf",
+          "xml_ok": true,
+          "include_uri": "model://test1_base"
+        }
+      }
+    }
+  ]
+}
