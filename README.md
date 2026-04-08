@@ -167,3 +167,4 @@ Note: this is open-loop control (no attitude controller), so the vehicle may dri
 
 - This repository does not include large model weights or generated artifacts by default. Download models locally and set `AI4SIM_MAIN_PATH` / `AI4SIM_7B_PATH`.
 - The pipeline is template-constrained to produce strictly structured XML fragments, followed by basic XML validation and formatting during final assembly.
+- The SDF templates under `generator/ontology/*.sdf` were generated from the corresponding OWL files under `generator/ontology/*.owl`, then manually refined into their current form.

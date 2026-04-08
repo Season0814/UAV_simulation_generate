@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:sdf="http://season.ai4sim/sdf#">
+
+  <owl:Ontology rdf:about="http://season.ai4sim/sdf/collision"/>
+
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Collision"/>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Pose">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Collision"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Geometry">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Collision"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Box">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Geometry"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Size">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Box"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Surface">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Collision"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Contact">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Surface"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Friction">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Surface"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#ODE">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Contact"/>
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Friction"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#MinDepth">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#ODE"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#MaxVel">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#ODE"/>
+  </owl:Class>
+
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#collisionName">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#Collision"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#poseValue">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#Pose"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#sizeValue">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#Size"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#minDepthValue">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#MinDepth"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#maxVelValue">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#MaxVel"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+
+</rdf:RDF>

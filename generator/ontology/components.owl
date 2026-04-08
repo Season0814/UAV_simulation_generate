@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:a4="http://season.ai4sim/ontology#">
+
+  <owl:Ontology rdf:about="http://season.ai4sim/ontology/components"/>
+
+  <owl:Class rdf:about="http://season.ai4sim/ontology#Template"/>
+  <owl:Class rdf:about="http://season.ai4sim/ontology#FrameworkTemplate">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/ontology#Template"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/ontology#ComponentTemplate">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/ontology#Template"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/ontology#TemplateSlot"/>
+  <owl:Class rdf:about="http://season.ai4sim/ontology#TemplateVariable"/>
+  <owl:Class rdf:about="http://season.ai4sim/ontology#DefaultBinding"/>
+
+  <owl:ObjectProperty rdf:about="http://season.ai4sim/ontology#hasSlot">
+    <rdfs:domain rdf:resource="http://season.ai4sim/ontology#Template"/>
+    <rdfs:range rdf:resource="http://season.ai4sim/ontology#TemplateSlot"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://season.ai4sim/ontology#usesTemplate">
+    <rdfs:domain rdf:resource="http://season.ai4sim/ontology#TemplateSlot"/>
+    <rdfs:range rdf:resource="http://season.ai4sim/ontology#Template"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://season.ai4sim/ontology#hasVariable">
+    <rdfs:domain rdf:resource="http://season.ai4sim/ontology#Template"/>
+    <rdfs:range rdf:resource="http://season.ai4sim/ontology#TemplateVariable"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://season.ai4sim/ontology#hasDefaultBinding">
+    <rdfs:domain rdf:resource="http://season.ai4sim/ontology#TemplateSlot"/>
+    <rdfs:range rdf:resource="http://season.ai4sim/ontology#DefaultBinding"/>
+  </owl:ObjectProperty>
+
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/ontology#sourceFile">
+    <rdfs:domain rdf:resource="http://season.ai4sim/ontology#Template"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/ontology#xmlRootTag">
+    <rdfs:domain rdf:resource="http://season.ai4sim/ontology#Template"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/ontology#slotName">
+    <rdfs:domain rdf:resource="http://season.ai4sim/ontology#TemplateSlot"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/ontology#placeholder">
+    <rdfs:domain rdf:resource="http://season.ai4sim/ontology#TemplateSlot"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/ontology#contextLabel">
+    <rdfs:domain rdf:resource="http://season.ai4sim/ontology#TemplateSlot"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/ontology#varName">
+    <rdfs:domain rdf:resource="http://season.ai4sim/ontology#TemplateVariable"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/ontology#bindingKey">
+    <rdfs:domain rdf:resource="http://season.ai4sim/ontology#DefaultBinding"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/ontology#bindingValue">
+    <rdfs:domain rdf:resource="http://season.ai4sim/ontology#DefaultBinding"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+
+  <a4:ComponentTemplate rdf:about="http://season.ai4sim/ontology#InertialTemplate">
+    <a4:sourceFile>inertial.sdf</a4:sourceFile>
+    <a4:xmlRootTag>inertial</a4:xmlRootTag>
+    <a4:hasSlot rdf:resource="http://season.ai4sim/ontology#Inertial_mass"/>
+    <a4:hasSlot rdf:resource="http://season.ai4sim/ontology#Inertial_ixx"/>
+    <a4:hasSlot rdf:resource="http://season.ai4sim/ontology#Inertial_ixy"/>
+    <a4:hasSlot rdf:resource="http://season.ai4sim/ontology#Inertial_ixz"/>
+    <a4:hasSlot rdf:resource="http://season.ai4sim/ontology#Inertial_iyy"/>
+    <a4:hasSlot rdf:resource="http://season.ai4sim/ontology#Inertial_iyz"/>
+    <a4:hasSlot rdf:resource="http://season.ai4sim/ontology#Inertial_izz"/>
+  </a4:ComponentTemplate>
+
+  <a4:TemplateSlot rdf:about="http://season.ai4sim/ontology#Inertial_mass">
+    <a4:slotName>mass</a4:slotName>
+    <a4:placeholder>${mass}</a4:placeholder>
+    <a4:hasDefaultBinding rdf:resource="http://season.ai4sim/ontology#Default_Inertial_mass"/>
+  </a4:TemplateSlot>
+  <a4:DefaultBinding rdf:about="http://season.ai4sim/ontology#Default_Inertial_mass">
+    <a4:bindingKey>mass</a4:bindingKey>
+    <a4:bindingValue>2.0</a4:bindingValue>
+  </a4:DefaultBinding>
+
+  <a4:TemplateSlot rdf:about="http://season.ai4sim/ontology#Inertial_ixx">
+    <a4:slotName>ixx</a4:slotName>
+    <a4:placeholder>${ixx}</a4:placeholder>
+    <a4:hasDefaultBinding rdf:resource="http://season.ai4sim/ontology#Default_Inertial_ixx"/>
+  </a4:TemplateSlot>
+  <a4:DefaultBinding rdf:about="http://season.ai4sim/ontology#Default_Inertial_ixx">
+    <a4:bindingKey>ixx</a4:bindingKey>
+    <a4:bindingValue>0.02166666666666667</a4:bindingValue>
+  </a4:DefaultBinding>
+
+  <a4:TemplateSlot rdf:about="http://season.ai4sim/ontology#Inertial_ixy">
+    <a4:slotName>ixy</a4:slotName>
+    <a4:placeholder>${ixy}</a4:placeholder>
+    <a4:hasDefaultBinding rdf:resource="http://season.ai4sim/ontology#Default_Inertial_ixy"/>
+  </a4:TemplateSlot>
+  <a4:DefaultBinding rdf:about="http://season.ai4sim/ontology#Default_Inertial_ixy">
+    <a4:bindingKey>ixy</a4:bindingKey>
+    <a4:bindingValue>0</a4:bindingValue>
+  </a4:DefaultBinding>
+
+  <a4:TemplateSlot rdf:about="http://season.ai4sim/ontology#Inertial_ixz">
+    <a4:slotName>ixz</a4:slotName>
+    <a4:placeholder>${ixz}</a4:placeholder>
+    <a4:hasDefaultBinding rdf:resource="http://season.ai4sim/ontology#Default_Inertial_ixz"/>
+  </a4:TemplateSlot>
+  <a4:DefaultBinding rdf:about="http://season.ai4sim/ontology#Default_Inertial_ixz">
+    <a4:bindingKey>ixz</a4:bindingKey>
+    <a4:bindingValue>0</a4:bindingValue>
+  </a4:DefaultBinding>
+
+  <a4:TemplateSlot rdf:about="http://season.ai4sim/ontology#Inertial_iyy">
+    <a4:slotName>iyy</a4:slotName>
+    <a4:placeholder>${iyy}</a4:placeholder>
+    <a4:hasDefaultBinding rdf:resource="http://season.ai4sim/ontology#Default_Inertial_iyy"/>
+  </a4:TemplateSlot>
+  <a4:DefaultBinding rdf:about="http://season.ai4sim/ontology#Default_Inertial_iyy">
+    <a4:bindingKey>iyy</a4:bindingKey>
+    <a4:bindingValue>0.02166666666666667</a4:bindingValue>
+  </a4:DefaultBinding>
+
+  <a4:TemplateSlot rdf:about="http://season.ai4sim/ontology#Inertial_iyz">
+    <a4:slotName>iyz</a4:slotName>
+    <a4:placeholder>${iyz}</a4:placeholder>
+    <a4:hasDefaultBinding rdf:resource="http://season.ai4sim/ontology#Default_Inertial_iyz"/>
+  </a4:TemplateSlot>
+  <a4:DefaultBinding rdf:about="http://season.ai4sim/ontology#Default_Inertial_iyz">
+    <a4:bindingKey>iyz</a4:bindingKey>
+    <a4:bindingValue>0</a4:bindingValue>
+  </a4:DefaultBinding>
+
+  <a4:TemplateSlot rdf:about="http://season.ai4sim/ontology#Inertial_izz">
+    <a4:slotName>izz</a4:slotName>
+    <a4:placeholder>${izz}</a4:placeholder>
+    <a4:hasDefaultBinding rdf:resource="http://season.ai4sim/ontology#Default_Inertial_izz"/>
+  </a4:TemplateSlot>
+  <a4:DefaultBinding rdf:about="http://season.ai4sim/ontology#Default_Inertial_izz">
+    <a4:bindingKey>izz</a4:bindingKey>
+    <a4:bindingValue>0.04000000000000001</a4:bindingValue>
+  </a4:DefaultBinding>
+
+  <a4:ComponentTemplate rdf:about="http://season.ai4sim/ontology#VisualTemplate">
+    <a4:sourceFile>visual.sdf</a4:sourceFile>
+    <a4:xmlRootTag>visual</a4:xmlRootTag>
+    <a4:hasSlot rdf:resource="http://season.ai4sim/ontology#Visual_visualName"/>
+    <a4:hasSlot rdf:resource="http://season.ai4sim/ontology#Visual_pose"/>
+    <a4:hasSlot rdf:resource="http://season.ai4sim/ontology#Visual_scale"/>
+    <a4:hasSlot rdf:resource="http://season.ai4sim/ontology#Visual_uri"/>
+  </a4:ComponentTemplate>
+
+  <a4:TemplateSlot rdf:about="http://season.ai4sim/ontology#Visual_visualName">
+    <a4:slotName>visualName</a4:slotName>
+    <a4:placeholder>${visualName}</a4:placeholder>
+  </a4:TemplateSlot>
+  <a4:TemplateSlot rdf:about="http://season.ai4sim/ontology#Visual_pose">
+    <a4:slotName>pose</a4:slotName>
+    <a4:placeholder>${pose}</a4:placeholder>
+    <a4:hasDefaultBinding rdf:resource="http://season.ai4sim/ontology#Default_Visual_pose"/>
+  </a4:TemplateSlot>
+  <a4:DefaultBinding rdf:about="http://season.ai4sim/ontology#Default_Visual_pose">
+    <a4:bindingKey>pose</a4:bindingKey>
+    <a4:bindingValue>0 0 0 0 0 0</a4:bindingValue>
+  </a4:DefaultBinding>
+  <a4:TemplateSlot rdf:about="http://season.ai4sim/ontology#Visual_scale">
+    <a4:slotName>scale</a4:slotName>
+    <a4:placeholder>${scale}</a4:placeholder>
+    <a4:hasDefaultBinding rdf:resource="http://season.ai4sim/ontology#Default_Visual_scale"/>
+  </a4:TemplateSlot>
+  <a4:DefaultBinding rdf:about="http://season.ai4sim/ontology#Default_Visual_scale">
+    <a4:bindingKey>scale</a4:bindingKey>
+    <a4:bindingValue>1 1 1</a4:bindingValue>
+  </a4:DefaultBinding>
+  <a4:TemplateSlot rdf:about="http://season.ai4sim/ontology#Visual_uri">
+    <a4:slotName>uri</a4:slotName>
+    <a4:placeholder>${uri}</a4:placeholder>
+    <a4:hasDefaultBinding rdf:resource="http://season.ai4sim/ontology#Default_Visual_uri"/>
+  </a4:TemplateSlot>
+  <a4:DefaultBinding rdf:about="http://season.ai4sim/ontology#Default_Visual_uri">
+    <a4:bindingKey>uri</a4:bindingKey>
+    <a4:bindingValue>model://x500_base/meshes/default.dae</a4:bindingValue>
+  </a4:DefaultBinding>
+
+  <a4:ComponentTemplate rdf:about="http://season.ai4sim/ontology#CollisionTemplate">
+    <a4:sourceFile>collision.sdf</a4:sourceFile>
+    <a4:xmlRootTag>collision</a4:xmlRootTag>
+    <a4:hasSlot rdf:resource="http://season.ai4sim/ontology#Collision_collisionName"/>
+    <a4:hasSlot rdf:resource="http://season.ai4sim/ontology#Collision_pose"/>
+    <a4:hasSlot rdf:resource="http://season.ai4sim/ontology#Collision_size"/>
+  </a4:ComponentTemplate>
+
+  <a4:TemplateSlot rdf:about="http://season.ai4sim/ontology#Collision_collisionName">
+    <a4:slotName>collisionName</a4:slotName>
+    <a4:placeholder>${collisionName}</a4:placeholder>
+  </a4:TemplateSlot>
+  <a4:TemplateSlot rdf:about="http://season.ai4sim/ontology#Collision_pose">
+    <a4:slotName>pose</a4:slotName>
+    <a4:placeholder>${pose}</a4:placeholder>
+    <a4:hasDefaultBinding rdf:resource="http://season.ai4sim/ontology#Default_Collision_pose"/>
+  </a4:TemplateSlot>
+  <a4:DefaultBinding rdf:about="http://season.ai4sim/ontology#Default_Collision_pose">
+    <a4:bindingKey>pose</a4:bindingKey>
+    <a4:bindingValue>0 0 0 0 0 0</a4:bindingValue>
+  </a4:DefaultBinding>
+  <a4:TemplateSlot rdf:about="http://season.ai4sim/ontology#Collision_size">
+    <a4:slotName>size</a4:slotName>
+    <a4:placeholder>${size}</a4:placeholder>
+    <a4:hasDefaultBinding rdf:resource="http://season.ai4sim/ontology#Default_Collision_size"/>
+  </a4:TemplateSlot>
+  <a4:DefaultBinding rdf:about="http://season.ai4sim/ontology#Default_Collision_size">
+    <a4:bindingKey>size</a4:bindingKey>
+    <a4:bindingValue>1 1 1</a4:bindingValue>
+  </a4:DefaultBinding>
+
+  <a4:ComponentTemplate rdf:about="http://season.ai4sim/ontology#JointTemplate">
+    <a4:sourceFile>joint.sdf</a4:sourceFile>
+    <a4:xmlRootTag>joint</a4:xmlRootTag>
+    <a4:hasSlot rdf:resource="http://season.ai4sim/ontology#Joint_jointName"/>
+    <a4:hasSlot rdf:resource="http://season.ai4sim/ontology#Joint_parentLink"/>
+    <a4:hasSlot rdf:resource="http://season.ai4sim/ontology#Joint_childLink"/>
+    <a4:hasSlot rdf:resource="http://season.ai4sim/ontology#Joint_axisXyz"/>
+  </a4:ComponentTemplate>
+
+  <a4:TemplateSlot rdf:about="http://season.ai4sim/ontology#Joint_jointName">
+    <a4:slotName>jointName</a4:slotName>
+    <a4:placeholder>${jointName}</a4:placeholder>
+    <a4:hasDefaultBinding rdf:resource="http://season.ai4sim/ontology#Default_Joint_jointName"/>
+  </a4:TemplateSlot>
+  <a4:DefaultBinding rdf:about="http://season.ai4sim/ontology#Default_Joint_jointName">
+    <a4:bindingKey>jointName</a4:bindingKey>
+    <a4:bindingValue>rotor_0_joint</a4:bindingValue>
+  </a4:DefaultBinding>
+  <a4:TemplateSlot rdf:about="http://season.ai4sim/ontology#Joint_parentLink">
+    <a4:slotName>parentLink</a4:slotName>
+    <a4:placeholder>${parentLink}</a4:placeholder>
+    <a4:hasDefaultBinding rdf:resource="http://season.ai4sim/ontology#Default_Joint_parentLink"/>
+  </a4:TemplateSlot>
+  <a4:DefaultBinding rdf:about="http://season.ai4sim/ontology#Default_Joint_parentLink">
+    <a4:bindingKey>parentLink</a4:bindingKey>
+    <a4:bindingValue>base_link</a4:bindingValue>
+  </a4:DefaultBinding>
+  <a4:TemplateSlot rdf:about="http://season.ai4sim/ontology#Joint_childLink">
+    <a4:slotName>childLink</a4:slotName>
+    <a4:placeholder>${childLink}</a4:placeholder>
+    <a4:hasDefaultBinding rdf:resource="http://season.ai4sim/ontology#Default_Joint_childLink"/>
+  </a4:TemplateSlot>
+  <a4:DefaultBinding rdf:about="http://season.ai4sim/ontology#Default_Joint_childLink">
+    <a4:bindingKey>childLink</a4:bindingKey>
+    <a4:bindingValue>rotor_0</a4:bindingValue>
+  </a4:DefaultBinding>
+  <a4:TemplateSlot rdf:about="http://season.ai4sim/ontology#Joint_axisXyz">
+    <a4:slotName>axisXyz</a4:slotName>
+    <a4:placeholder>${axisXyz}</a4:placeholder>
+    <a4:hasDefaultBinding rdf:resource="http://season.ai4sim/ontology#Default_Joint_axisXyz"/>
+  </a4:TemplateSlot>
+  <a4:DefaultBinding rdf:about="http://season.ai4sim/ontology#Default_Joint_axisXyz">
+    <a4:bindingKey>axisXyz</a4:bindingKey>
+    <a4:bindingValue>0 0 1</a4:bindingValue>
+  </a4:DefaultBinding>
+
+  <a4:ComponentTemplate rdf:about="http://season.ai4sim/ontology#StandardSensorsTemplate">
+    <a4:sourceFile>standard_sensors.sdf</a4:sourceFile>
+    <a4:xmlRootTag>sensor</a4:xmlRootTag>
+    <a4:hasSlot rdf:resource="http://season.ai4sim/ontology#Sensors_airPressureName"/>
+    <a4:hasSlot rdf:resource="http://season.ai4sim/ontology#Sensors_magnetometerName"/>
+    <a4:hasSlot rdf:resource="http://season.ai4sim/ontology#Sensors_imuName"/>
+    <a4:hasSlot rdf:resource="http://season.ai4sim/ontology#Sensors_navsatName"/>
+  </a4:ComponentTemplate>
+
+  <a4:TemplateSlot rdf:about="http://season.ai4sim/ontology#Sensors_airPressureName">
+    <a4:slotName>airPressureName</a4:slotName>
+    <a4:placeholder>${airPressureName}</a4:placeholder>
+    <a4:hasDefaultBinding rdf:resource="http://season.ai4sim/ontology#Default_Sensors_airPressureName"/>
+  </a4:TemplateSlot>
+  <a4:DefaultBinding rdf:about="http://season.ai4sim/ontology#Default_Sensors_airPressureName">
+    <a4:bindingKey>airPressureName</a4:bindingKey>
+    <a4:bindingValue>air_pressure_sensor</a4:bindingValue>
+  </a4:DefaultBinding>
+  <a4:TemplateSlot rdf:about="http://season.ai4sim/ontology#Sensors_magnetometerName">
+    <a4:slotName>magnetometerName</a4:slotName>
+    <a4:placeholder>${magnetometerName}</a4:placeholder>
+    <a4:hasDefaultBinding rdf:resource="http://season.ai4sim/ontology#Default_Sensors_magnetometerName"/>
+  </a4:TemplateSlot>
+  <a4:DefaultBinding rdf:about="http://season.ai4sim/ontology#Default_Sensors_magnetometerName">
+    <a4:bindingKey>magnetometerName</a4:bindingKey>
+    <a4:bindingValue>magnetometer_sensor</a4:bindingValue>
+  </a4:DefaultBinding>
+  <a4:TemplateSlot rdf:about="http://season.ai4sim/ontology#Sensors_imuName">
+    <a4:slotName>imuName</a4:slotName>
+    <a4:placeholder>${imuName}</a4:placeholder>
+    <a4:hasDefaultBinding rdf:resource="http://season.ai4sim/ontology#Default_Sensors_imuName"/>
+  </a4:TemplateSlot>
+  <a4:DefaultBinding rdf:about="http://season.ai4sim/ontology#Default_Sensors_imuName">
+    <a4:bindingKey>imuName</a4:bindingKey>
+    <a4:bindingValue>imu_sensor</a4:bindingValue>
+  </a4:DefaultBinding>
+  <a4:TemplateSlot rdf:about="http://season.ai4sim/ontology#Sensors_navsatName">
+    <a4:slotName>navsatName</a4:slotName>
+    <a4:placeholder>${navsatName}</a4:placeholder>
+    <a4:hasDefaultBinding rdf:resource="http://season.ai4sim/ontology#Default_Sensors_navsatName"/>
+  </a4:TemplateSlot>
+  <a4:DefaultBinding rdf:about="http://season.ai4sim/ontology#Default_Sensors_navsatName">
+    <a4:bindingKey>navsatName</a4:bindingKey>
+    <a4:bindingValue>navsat_sensor</a4:bindingValue>
+  </a4:DefaultBinding>
+
+  <a4:ComponentTemplate rdf:about="http://season.ai4sim/ontology#MotorPluginTemplate">
+    <a4:sourceFile>motor_plugin.sdf</a4:sourceFile>
+    <a4:xmlRootTag>plugin</a4:xmlRootTag>
+    <a4:hasSlot rdf:resource="http://season.ai4sim/ontology#Motor_jointName"/>
+    <a4:hasSlot rdf:resource="http://season.ai4sim/ontology#Motor_linkName"/>
+    <a4:hasSlot rdf:resource="http://season.ai4sim/ontology#Motor_turningDirection"/>
+    <a4:hasSlot rdf:resource="http://season.ai4sim/ontology#Motor_motorNumber"/>
+    <a4:hasSlot rdf:resource="http://season.ai4sim/ontology#Motor_timeConstantUp"/>
+    <a4:hasSlot rdf:resource="http://season.ai4sim/ontology#Motor_timeConstantDown"/>
+    <a4:hasSlot rdf:resource="http://season.ai4sim/ontology#Motor_maxRotVelocity"/>
+    <a4:hasSlot rdf:resource="http://season.ai4sim/ontology#Motor_motorConstant"/>
+    <a4:hasSlot rdf:resource="http://season.ai4sim/ontology#Motor_momentConstant"/>
+    <a4:hasSlot rdf:resource="http://season.ai4sim/ontology#Motor_commandSubTopic"/>
+    <a4:hasSlot rdf:resource="http://season.ai4sim/ontology#Motor_rotorDragCoefficient"/>
+    <a4:hasSlot rdf:resource="http://season.ai4sim/ontology#Motor_rollingMomentCoefficient"/>
+    <a4:hasSlot rdf:resource="http://season.ai4sim/ontology#Motor_rotorVelocitySlowdownSim"/>
+    <a4:hasSlot rdf:resource="http://season.ai4sim/ontology#Motor_motorType"/>
+  </a4:ComponentTemplate>
+
+  <a4:TemplateSlot rdf:about="http://season.ai4sim/ontology#Motor_jointName">
+    <a4:slotName>jointName</a4:slotName>
+    <a4:placeholder>${jointName}</a4:placeholder>
+    <a4:hasDefaultBinding rdf:resource="http://season.ai4sim/ontology#Default_Motor_jointName"/>
+  </a4:TemplateSlot>
+  <a4:DefaultBinding rdf:about="http://season.ai4sim/ontology#Default_Motor_jointName">
+    <a4:bindingKey>jointName</a4:bindingKey>
+    <a4:bindingValue>rotor_0_joint</a4:bindingValue>
+  </a4:DefaultBinding>
+
+  <a4:TemplateSlot rdf:about="http://season.ai4sim/ontology#Motor_linkName">
+    <a4:slotName>linkName</a4:slotName>
+    <a4:placeholder>${linkName}</a4:placeholder>
+    <a4:hasDefaultBinding rdf:resource="http://season.ai4sim/ontology#Default_Motor_linkName"/>
+  </a4:TemplateSlot>
+  <a4:DefaultBinding rdf:about="http://season.ai4sim/ontology#Default_Motor_linkName">
+    <a4:bindingKey>linkName</a4:bindingKey>
+    <a4:bindingValue>rotor_0</a4:bindingValue>
+  </a4:DefaultBinding>
+
+  <a4:TemplateSlot rdf:about="http://season.ai4sim/ontology#Motor_turningDirection">
+    <a4:slotName>turningDirection</a4:slotName>
+    <a4:placeholder>${turningDirection}</a4:placeholder>
+    <a4:hasDefaultBinding rdf:resource="http://season.ai4sim/ontology#Default_Motor_turningDirection"/>
+  </a4:TemplateSlot>
+  <a4:DefaultBinding rdf:about="http://season.ai4sim/ontology#Default_Motor_turningDirection">
+    <a4:bindingKey>turningDirection</a4:bindingKey>
+    <a4:bindingValue>ccw</a4:bindingValue>
+  </a4:DefaultBinding>
+
+  <a4:TemplateSlot rdf:about="http://season.ai4sim/ontology#Motor_motorNumber">
+    <a4:slotName>motorNumber</a4:slotName>
+    <a4:placeholder>${motorNumber}</a4:placeholder>
+    <a4:hasDefaultBinding rdf:resource="http://season.ai4sim/ontology#Default_Motor_motorNumber"/>
+  </a4:TemplateSlot>
+  <a4:DefaultBinding rdf:about="http://season.ai4sim/ontology#Default_Motor_motorNumber">
+    <a4:bindingKey>motorNumber</a4:bindingKey>
+    <a4:bindingValue>0</a4:bindingValue>
+  </a4:DefaultBinding>
+
+  <a4:TemplateSlot rdf:about="http://season.ai4sim/ontology#Motor_timeConstantUp">
+    <a4:slotName>timeConstantUp</a4:slotName>
+    <a4:placeholder>${timeConstantUp}</a4:placeholder>
+    <a4:hasDefaultBinding rdf:resource="http://season.ai4sim/ontology#Default_Motor_timeConstantUp"/>
+  </a4:TemplateSlot>
+  <a4:DefaultBinding rdf:about="http://season.ai4sim/ontology#Default_Motor_timeConstantUp">
+    <a4:bindingKey>timeConstantUp</a4:bindingKey>
+    <a4:bindingValue>0.0125</a4:bindingValue>
+  </a4:DefaultBinding>
+
+  <a4:TemplateSlot rdf:about="http://season.ai4sim/ontology#Motor_timeConstantDown">
+    <a4:slotName>timeConstantDown</a4:slotName>
+    <a4:placeholder>${timeConstantDown}</a4:placeholder>
+    <a4:hasDefaultBinding rdf:resource="http://season.ai4sim/ontology#Default_Motor_timeConstantDown"/>
+  </a4:TemplateSlot>
+  <a4:DefaultBinding rdf:about="http://season.ai4sim/ontology#Default_Motor_timeConstantDown">
+    <a4:bindingKey>timeConstantDown</a4:bindingKey>
+    <a4:bindingValue>0.025</a4:bindingValue>
+  </a4:DefaultBinding>
+
+  <a4:TemplateSlot rdf:about="http://season.ai4sim/ontology#Motor_maxRotVelocity">
+    <a4:slotName>maxRotVelocity</a4:slotName>
+    <a4:placeholder>${maxRotVelocity}</a4:placeholder>
+    <a4:hasDefaultBinding rdf:resource="http://season.ai4sim/ontology#Default_Motor_maxRotVelocity"/>
+  </a4:TemplateSlot>
+  <a4:DefaultBinding rdf:about="http://season.ai4sim/ontology#Default_Motor_maxRotVelocity">
+    <a4:bindingKey>maxRotVelocity</a4:bindingKey>
+    <a4:bindingValue>1000.0</a4:bindingValue>
+  </a4:DefaultBinding>
+
+  <a4:TemplateSlot rdf:about="http://season.ai4sim/ontology#Motor_motorConstant">
+    <a4:slotName>motorConstant</a4:slotName>
+    <a4:placeholder>${motorConstant}</a4:placeholder>
+    <a4:hasDefaultBinding rdf:resource="http://season.ai4sim/ontology#Default_Motor_motorConstant"/>
+  </a4:TemplateSlot>
+  <a4:DefaultBinding rdf:about="http://season.ai4sim/ontology#Default_Motor_motorConstant">
+    <a4:bindingKey>motorConstant</a4:bindingKey>
+    <a4:bindingValue>8.54858e-06</a4:bindingValue>
+  </a4:DefaultBinding>
+
+  <a4:TemplateSlot rdf:about="http://season.ai4sim/ontology#Motor_momentConstant">
+    <a4:slotName>momentConstant</a4:slotName>
+    <a4:placeholder>${momentConstant}</a4:placeholder>
+    <a4:hasDefaultBinding rdf:resource="http://season.ai4sim/ontology#Default_Motor_momentConstant"/>
+  </a4:TemplateSlot>
+  <a4:DefaultBinding rdf:about="http://season.ai4sim/ontology#Default_Motor_momentConstant">
+    <a4:bindingKey>momentConstant</a4:bindingKey>
+    <a4:bindingValue>0.016</a4:bindingValue>
+  </a4:DefaultBinding>
+
+  <a4:TemplateSlot rdf:about="http://season.ai4sim/ontology#Motor_commandSubTopic">
+    <a4:slotName>commandSubTopic</a4:slotName>
+    <a4:placeholder>${commandSubTopic}</a4:placeholder>
+    <a4:hasDefaultBinding rdf:resource="http://season.ai4sim/ontology#Default_Motor_commandSubTopic"/>
+  </a4:TemplateSlot>
+  <a4:DefaultBinding rdf:about="http://season.ai4sim/ontology#Default_Motor_commandSubTopic">
+    <a4:bindingKey>commandSubTopic</a4:bindingKey>
+    <a4:bindingValue>command/motor_speed</a4:bindingValue>
+  </a4:DefaultBinding>
+
+  <a4:TemplateSlot rdf:about="http://season.ai4sim/ontology#Motor_rotorDragCoefficient">
+    <a4:slotName>rotorDragCoefficient</a4:slotName>
+    <a4:placeholder>${rotorDragCoefficient}</a4:placeholder>
+    <a4:hasDefaultBinding rdf:resource="http://season.ai4sim/ontology#Default_Motor_rotorDragCoefficient"/>
+  </a4:TemplateSlot>
+  <a4:DefaultBinding rdf:about="http://season.ai4sim/ontology#Default_Motor_rotorDragCoefficient">
+    <a4:bindingKey>rotorDragCoefficient</a4:bindingKey>
+    <a4:bindingValue>8.06428e-05</a4:bindingValue>
+  </a4:DefaultBinding>
+
+  <a4:TemplateSlot rdf:about="http://season.ai4sim/ontology#Motor_rollingMomentCoefficient">
+    <a4:slotName>rollingMomentCoefficient</a4:slotName>
+    <a4:placeholder>${rollingMomentCoefficient}</a4:placeholder>
+    <a4:hasDefaultBinding rdf:resource="http://season.ai4sim/ontology#Default_Motor_rollingMomentCoefficient"/>
+  </a4:TemplateSlot>
+  <a4:DefaultBinding rdf:about="http://season.ai4sim/ontology#Default_Motor_rollingMomentCoefficient">
+    <a4:bindingKey>rollingMomentCoefficient</a4:bindingKey>
+    <a4:bindingValue>1e-06</a4:bindingValue>
+  </a4:DefaultBinding>
+
+  <a4:TemplateSlot rdf:about="http://season.ai4sim/ontology#Motor_rotorVelocitySlowdownSim">
+    <a4:slotName>rotorVelocitySlowdownSim</a4:slotName>
+    <a4:placeholder>${rotorVelocitySlowdownSim}</a4:placeholder>
+    <a4:hasDefaultBinding rdf:resource="http://season.ai4sim/ontology#Default_Motor_rotorVelocitySlowdownSim"/>
+  </a4:TemplateSlot>
+  <a4:DefaultBinding rdf:about="http://season.ai4sim/ontology#Default_Motor_rotorVelocitySlowdownSim">
+    <a4:bindingKey>rotorVelocitySlowdownSim</a4:bindingKey>
+    <a4:bindingValue>10</a4:bindingValue>
+  </a4:DefaultBinding>
+
+  <a4:TemplateSlot rdf:about="http://season.ai4sim/ontology#Motor_motorType">
+    <a4:slotName>motorType</a4:slotName>
+    <a4:placeholder>${motorType}</a4:placeholder>
+    <a4:hasDefaultBinding rdf:resource="http://season.ai4sim/ontology#Default_Motor_motorType"/>
+  </a4:TemplateSlot>
+  <a4:DefaultBinding rdf:about="http://season.ai4sim/ontology#Default_Motor_motorType">
+    <a4:bindingKey>motorType</a4:bindingKey>
+    <a4:bindingValue>velocity</a4:bindingValue>
+  </a4:DefaultBinding>
+
+</rdf:RDF>

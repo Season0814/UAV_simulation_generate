@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:sdf="http://season.ai4sim/sdf#">
+
+  <owl:Ontology rdf:about="http://season.ai4sim/sdf/joint"/>
+
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Joint"/>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Parent">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Joint"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Child">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Joint"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Axis">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Joint"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Xyz">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Axis"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Limit">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Axis"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Lower">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Limit"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Upper">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Limit"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Dynamics">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Axis"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#SpringReference">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Dynamics"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#SpringStiffness">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Dynamics"/>
+  </owl:Class>
+
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#jointName">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#Joint"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#jointType">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#Joint"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#parentValue">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#Parent"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#childValue">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#Child"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#xyzValue">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#Xyz"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#lowerValue">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#Lower"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#upperValue">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#Upper"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#springReferenceValue">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#SpringReference"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#springStiffnessValue">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#SpringStiffness"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+
+</rdf:RDF>

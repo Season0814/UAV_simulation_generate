@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:sdf="http://season.ai4sim/sdf#">
+
+  <owl:Ontology rdf:about="http://season.ai4sim/sdf/motor_plugin"/>
+
+  <owl:Class rdf:about="http://season.ai4sim/sdf#MotorPlugin"/>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#MotorPluginJointName">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#MotorPlugin"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#MotorPluginLinkName">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#MotorPlugin"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#MotorPluginTurningDirection">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#MotorPlugin"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#MotorPluginTimeConstantUp">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#MotorPlugin"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#MotorPluginTimeConstantDown">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#MotorPlugin"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#MotorPluginMaxRotVelocity">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#MotorPlugin"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#MotorPluginMotorConstant">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#MotorPlugin"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#MotorPluginMomentConstant">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#MotorPlugin"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#MotorPluginCommandSubTopic">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#MotorPlugin"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#MotorPluginMotorNumber">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#MotorPlugin"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#MotorPluginRotorDragCoefficient">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#MotorPlugin"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#MotorPluginRollingMomentCoefficient">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#MotorPlugin"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#MotorPluginRotorVelocitySlowdownSim">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#MotorPlugin"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#MotorPluginMotorType">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#MotorPlugin"/>
+  </owl:Class>
+
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#pluginFilename">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#MotorPlugin"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#pluginName">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#MotorPlugin"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#motorPluginJointNameValue">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#MotorPluginJointName"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#motorPluginLinkNameValue">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#MotorPluginLinkName"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#motorPluginTurningDirectionValue">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#MotorPluginTurningDirection"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#motorPluginTimeConstantUpValue">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#MotorPluginTimeConstantUp"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#motorPluginTimeConstantDownValue">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#MotorPluginTimeConstantDown"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#motorPluginMaxRotVelocityValue">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#MotorPluginMaxRotVelocity"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#motorPluginMotorConstantValue">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#MotorPluginMotorConstant"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#motorPluginMomentConstantValue">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#MotorPluginMomentConstant"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#motorPluginCommandSubTopicValue">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#MotorPluginCommandSubTopic"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#motorPluginMotorNumberValue">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#MotorPluginMotorNumber"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#motorPluginRotorDragCoefficientValue">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#MotorPluginRotorDragCoefficient"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#motorPluginRollingMomentCoefficientValue">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#MotorPluginRollingMomentCoefficient"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#motorPluginRotorVelocitySlowdownSimValue">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#MotorPluginRotorVelocitySlowdownSim"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#motorPluginMotorTypeValue">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#MotorPluginMotorType"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+
+</rdf:RDF>

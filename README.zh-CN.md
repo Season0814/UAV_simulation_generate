@@ -167,3 +167,4 @@ gz topic -t /test1/command/motor_speed -m gz.msgs.Actuators -p 'velocity: 0 velo
 
 - 本仓库默认不包含大模型权重与生成产物。请在本地下载模型并设置 `AI4SIM_MAIN_PATH` / `AI4SIM_7B_PATH`。
 - 生成流程受模板约束，产出的 XML 片段会在最终组装阶段做基础校验与格式化。
+- `generator/ontology/*.sdf` 目录下的模板文件由对应的 `generator/ontology/*.owl` 本体文件生成得到，并在此基础上进行了人工微调，形成当前版本。

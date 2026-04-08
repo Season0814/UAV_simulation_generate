@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:sdf="http://season.ai4sim/sdf#">
+
+  <owl:Ontology rdf:about="http://season.ai4sim/sdf/standard_sensors"/>
+
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Sensor"/>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#GzFrameId">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Sensor"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#AlwaysOn">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Sensor"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#UpdateRate">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Sensor"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://season.ai4sim/sdf#AirPressure">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Sensor"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#AirPressurePressure">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#AirPressure"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#AirPressureNoise">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#AirPressurePressure"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#AirPressureNoiseMean">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#AirPressureNoise"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#AirPressureNoiseStddev">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#AirPressureNoise"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Magnetometer">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Sensor"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#MagnetometerX">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Magnetometer"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#MagnetometerY">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Magnetometer"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#MagnetometerZ">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Magnetometer"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#MagnetometerXNoise">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#MagnetometerX"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#MagnetometerYNoise">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#MagnetometerY"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#MagnetometerZNoise">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#MagnetometerZ"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#MagnetometerNoiseStddev">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#MagnetometerXNoise"/>
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#MagnetometerYNoise"/>
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#MagnetometerZNoise"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://season.ai4sim/sdf#IMU">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Sensor"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#AngularVelocity">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#IMU"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#AngularVelocityX">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#AngularVelocity"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#AngularVelocityY">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#AngularVelocity"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#AngularVelocityZ">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#AngularVelocity"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#AngularVelocityNoise">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#AngularVelocityX"/>
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#AngularVelocityY"/>
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#AngularVelocityZ"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#AngularVelocityNoiseMean">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#AngularVelocityNoise"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#AngularVelocityNoiseStddev">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#AngularVelocityNoise"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://season.ai4sim/sdf#LinearAcceleration">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#IMU"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#LinearAccelerationX">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#LinearAcceleration"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#LinearAccelerationY">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#LinearAcceleration"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#LinearAccelerationZ">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#LinearAcceleration"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#LinearAccelerationNoise">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#LinearAccelerationX"/>
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#LinearAccelerationY"/>
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#LinearAccelerationZ"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#LinearAccelerationNoiseMean">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#LinearAccelerationNoise"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#LinearAccelerationNoiseStddev">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#LinearAccelerationNoise"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Navsat">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Sensor"/>
+  </owl:Class>
+
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#sensorName">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#Sensor"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#sensorType">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#Sensor"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#gzFrameIdValue">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#GzFrameId"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#alwaysOnValue">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#AlwaysOn"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#updateRateValue">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#UpdateRate"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#airPressureNoiseMeanValue">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#AirPressureNoiseMean"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#airPressureNoiseStddevValue">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#AirPressureNoiseStddev"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#magnetometerNoiseStddevValue">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#MagnetometerNoiseStddev"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#angularVelocityNoiseMeanValue">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#AngularVelocityNoiseMean"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#angularVelocityNoiseStddevValue">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#AngularVelocityNoiseStddev"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#linearAccelerationNoiseMeanValue">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#LinearAccelerationNoiseMean"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#linearAccelerationNoiseStddevValue">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#LinearAccelerationNoiseStddev"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+
+</rdf:RDF>

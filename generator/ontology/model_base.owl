@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:sdf="http://season.ai4sim/sdf#">
+
+  <owl:Ontology rdf:about="http://season.ai4sim/sdf/model_base"/>
+
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#modelName">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#linkName">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#poseValue">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#boolValue">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+
+  <owl:Class rdf:about="http://season.ai4sim/sdf#SdfModelBase"/>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Model_ModelBase">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#SdfModelBase"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#ModelPose_ModelBase">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Model_ModelBase"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#ModelSelfCollide_ModelBase">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Model_ModelBase"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#ModelStatic_ModelBase">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Model_ModelBase"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Link_ModelBase">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Model_ModelBase"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#LinkGravity_ModelBase">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Link_ModelBase"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#LinkVelocityDecay_ModelBase">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Link_ModelBase"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#LinkPose_ModelBase">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Link_ModelBase"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://season.ai4sim/sdf#BaseLink_ModelBase">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Link_ModelBase"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#BaseLinkInertialPlaceholder">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#BaseLink_ModelBase"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#BaseLinkVisualPlaceholder">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#BaseLink_ModelBase"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#MotorBaseVisual0Placeholder">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#BaseLink_ModelBase"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#MotorBaseVisual1Placeholder">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#BaseLink_ModelBase"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#MotorBaseVisual2Placeholder">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#BaseLink_ModelBase"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#MotorBaseVisual3Placeholder">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#BaseLink_ModelBase"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#BaseLinkCollision0Placeholder">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#BaseLink_ModelBase"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#BaseLinkCollision1Placeholder">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#BaseLink_ModelBase"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#BaseLinkCollision2Placeholder">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#BaseLink_ModelBase"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#BaseLinkCollision3Placeholder">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#BaseLink_ModelBase"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#BaseLinkCollision4Placeholder">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#BaseLink_ModelBase"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#StandardSensorsPlaceholder">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#BaseLink_ModelBase"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Rotor0Link_ModelBase">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Link_ModelBase"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Rotor0InertialPlaceholder">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Rotor0Link_ModelBase"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Rotor0VisualPlaceholder">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Rotor0Link_ModelBase"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Rotor0MotorBellVisualPlaceholder">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Rotor0Link_ModelBase"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Rotor0CollisionPlaceholder">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Rotor0Link_ModelBase"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Rotor0JointPlaceholder">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Model_ModelBase"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Rotor1Link_ModelBase">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Link_ModelBase"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Rotor1InertialPlaceholder">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Rotor1Link_ModelBase"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Rotor1VisualPlaceholder">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Rotor1Link_ModelBase"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Rotor1MotorBellVisualPlaceholder">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Rotor1Link_ModelBase"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Rotor1CollisionPlaceholder">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Rotor1Link_ModelBase"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Rotor1JointPlaceholder">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Model_ModelBase"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Rotor2Link_ModelBase">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Link_ModelBase"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Rotor2InertialPlaceholder">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Rotor2Link_ModelBase"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Rotor2VisualPlaceholder">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Rotor2Link_ModelBase"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Rotor2MotorBellVisualPlaceholder">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Rotor2Link_ModelBase"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Rotor2CollisionPlaceholder">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Rotor2Link_ModelBase"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Rotor2JointPlaceholder">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Model_ModelBase"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Rotor3Link_ModelBase">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Link_ModelBase"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Rotor3InertialPlaceholder">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Rotor3Link_ModelBase"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Rotor3VisualPlaceholder">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Rotor3Link_ModelBase"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Rotor3MotorBellVisualPlaceholder">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Rotor3Link_ModelBase"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Rotor3CollisionPlaceholder">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Rotor3Link_ModelBase"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Rotor3JointPlaceholder">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Model_ModelBase"/>
+  </owl:Class>
+
+</rdf:RDF>

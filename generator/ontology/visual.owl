@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:sdf="http://season.ai4sim/sdf#">
+
+  <owl:Ontology rdf:about="http://season.ai4sim/sdf/visual"/>
+
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Visual"/>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Pose">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Visual"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Geometry">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Visual"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Mesh">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Geometry"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Scale">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Mesh"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://season.ai4sim/sdf#Uri">
+    <rdfs:subClassOf rdf:resource="http://season.ai4sim/sdf#Mesh"/>
+  </owl:Class>
+
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#visualName">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#Visual"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#poseValue">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#Pose"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#scaleValue">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#Scale"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://season.ai4sim/sdf#uriValue">
+    <rdfs:domain rdf:resource="http://season.ai4sim/sdf#Uri"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+
+</rdf:RDF>
